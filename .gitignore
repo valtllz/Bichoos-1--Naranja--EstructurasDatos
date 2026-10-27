@@ -1,0 +1,24 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Test results
+[Tt]est[Rr]esult*/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
