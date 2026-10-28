@@ -5,3 +5,10 @@ Integrantes
 -Hector Ramirez
 -Maria Fernanda Salazar 
 Descripcion: Proyecto para la materia Estructura de datos
+
+
+
+ESTRUCTURA
+-Documentacion
+-Codigo 
+-Recursos
