@@ -1,59 +1,71 @@
-﻿
+﻿using System;
+
 class Program
 {
     static void Main()
     {
-        ListaCircularTiempo tiempo =
-            new ListaCircularTiempo();
+        ListaCircular ciclo =
+            new ListaCircular();
 
-        tiempo.AgregarMomento("Mañana");
-        tiempo.AgregarMomento("Tarde");
-        tiempo.AgregarMomento("Noche");
-        tiempo.AgregarMomento("Madrugada");
+        ciclo.Inicializar();
+
+        DiccionarioBichoos dic =
+            new DiccionarioBichoos();
+
+        dic.Agregar();
+
+        GrafoBosque grafo =
+            new GrafoBosque();
+
+        grafo.AgregarZona("Bosque");
+        grafo.AgregarZona("Pantano");
+        grafo.AgregarZona("Flores");
+
+        grafo.Conectar(
+            "Bosque",
+            "Pantano");
+
+        grafo.Conectar(
+            "Bosque",
+            "Flores");
 
         int opcion;
 
         do
         {
-            Console.WriteLine("\n=== BICHOOS ===");
-            Console.WriteLine("1. Mostrar ciclo");
-            Console.WriteLine("2. Avanzar tiempo");
-            Console.WriteLine("3. Buscar momento");
-            Console.WriteLine("4. Salir");
+            Console.WriteLine();
+            Console.WriteLine("=== BICHOOS ===");
+            Console.WriteLine("1 Lista Circular");
+            Console.WriteLine("2 Diccionario");
+            Console.WriteLine("3 Grafo");
+            Console.WriteLine("0 Salir");
 
-            Console.Write("Opcion: ");
-            opcion = Convert.ToInt32(Console.ReadLine());
+            opcion =
+            Convert.ToInt32(
+            Console.ReadLine());
 
             switch (opcion)
             {
                 case 1:
-                    tiempo.MostrarCiclo();
+
+                    ciclo.Mostrar();
+                    ciclo.Avanzar();
+
                     break;
 
                 case 2:
-                    tiempo.AvanzarTiempo();
+
+                    dic.Mostrar();
+
                     break;
 
                 case 3:
 
-                    Console.Write("Momento a buscar: ");
+                    grafo.Mostrar();
 
-                    string buscar =
-                    Console.ReadLine();
-
-                    tiempo.BuscarMomento(buscar);
-
-                    break;
-
-                case 4:
-                    Console.WriteLine("Adios.");
-                    break;
-
-                default:
-                    Console.WriteLine("Opcion incorrecta.");
                     break;
             }
 
-        } while (opcion != 4);
+        } while (opcion != 0);
     }
 }
