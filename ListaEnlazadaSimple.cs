@@ -53,4 +53,29 @@ public class ListaEnlazadaSimple
 
         return false;
     }
+
+    public void Eliminar(string nombre)
+    {
+        if (cabeza == null)
+            return;
+
+        if (cabeza.Nombre == nombre)
+        {
+            cabeza = cabeza.Siguiente;
+            return;
+        }
+
+        Nodo actual = cabeza;
+
+        while (actual.Siguiente != null)
+        {
+            if (actual.Siguiente.Nombre == nombre)
+            {
+                actual.Siguiente = actual.Siguiente.Siguiente;
+                return;
+            }
+
+            actual = actual.Siguiente;
+        }
+    }
 }
