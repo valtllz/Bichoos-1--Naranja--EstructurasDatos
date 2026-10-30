@@ -1,6 +1,8 @@
 ﻿using Bichoos1;
 
 ListaEnlazadaSimple lista = new();
+MapaBosque mapa = new();
+Mochila mochila = new();
 
 int opcion;
 
@@ -11,10 +13,19 @@ do
     Console.WriteLine("2. Mostrar insectos");
     Console.WriteLine("3. Buscar insecto");
     Console.WriteLine("4. Eliminar insecto");
-    Console.WriteLine("5. Salir");
+    Console.WriteLine("5. Mostrar mapa");
+    Console.WriteLine("6. Recolectar recurso");
+    Console.WriteLine("7. Ver último recurso");
+    Console.WriteLine("8. Retirar último recurso");
+    Console.WriteLine("9. Salir");
 
-    Console.Write("Seleccione una opcion: ");
-    opcion = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Opción: ");
+
+    if (!int.TryParse(Console.ReadLine(), out opcion))
+    {
+        Console.WriteLine("Opción inválida");
+        continue;
+    }
 
     switch (opcion)
     {
@@ -33,27 +44,43 @@ do
             string buscar = Console.ReadLine()!;
 
             if (lista.Buscar(buscar))
-                Console.WriteLine("✅ Insecto encontrado");
+                Console.WriteLine("Insecto encontrado");
             else
-                Console.WriteLine("❌ Insecto no encontrado");
+                Console.WriteLine("Insecto no encontrado");
 
             break;
 
         case 4:
             Console.Write("Insecto a eliminar: ");
             string eliminar = Console.ReadLine()!;
-
             lista.Eliminar(eliminar);
-            Console.WriteLine("Proceso completado");
             break;
 
         case 5:
-            Console.WriteLine("Saliendo...");
+            mapa.MostrarMapa();
+            break;
+
+        case 6:
+            Console.Write("Recurso recolectado: ");
+            string recurso = Console.ReadLine()!;
+            mochila.Recolectar(recurso);
+            break;
+
+        case 7:
+            mochila.VerUltimo();
+            break;
+
+        case 8:
+            mochila.Retirar();
+            break;
+
+        case 9:
+            Console.WriteLine("Hasta luego.");
             break;
 
         default:
-            Console.WriteLine("Opcion invalida");
+            Console.WriteLine("Opción inválida.");
             break;
     }
 
-} while (opcion != 5);
+} while (opcion != 9);
