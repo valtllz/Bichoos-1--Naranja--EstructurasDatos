@@ -23,4 +23,34 @@ public class ListaEnlazadaSimple
 
         actual.Siguiente = nuevo;
     }
+
+    public void Mostrar()
+    {
+        Nodo? actual = cabeza;
+
+        Console.WriteLine("\n=== INSECTOS ENCONTRADOS ===");
+
+        while (actual != null)
+        {
+            Console.WriteLine(actual.Nombre);
+            actual = actual.Siguiente;
+        }
+    }
+
+    public bool Buscar(string nombre)
+    {
+        Nodo? actual = cabeza;
+
+        while (actual != null)
+        {
+            if (actual.Nombre == nombre)
+            {
+                return true;
+            }
+
+            actual = actual.Siguiente;
+        }
+
+        return false;
+    }
 }
