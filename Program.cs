@@ -4,15 +4,13 @@ class Program
 {
     static void Main()
     {
-        ListaCircular ciclo =
-            new ListaCircular();
-
+        ListaCircular ciclo = new ListaCircular();
         ciclo.Inicializar();
 
-        DiccionarioBichoos dic =
+        DiccionarioBichoos diccionario =
             new DiccionarioBichoos();
 
-        dic.Agregar();
+        diccionario.Agregar();
 
         GrafoBosque grafo =
             new GrafoBosque();
@@ -21,32 +19,28 @@ class Program
         grafo.AgregarZona("Pantano");
         grafo.AgregarZona("Flores");
 
-        grafo.Conectar(
-            "Bosque",
-            "Pantano");
-
-        grafo.Conectar(
-            "Bosque",
-            "Flores");
+        grafo.Conectar("Bosque", "Pantano");
+        grafo.Conectar("Bosque", "Flores");
 
         int opcion;
 
         do
         {
             Console.WriteLine();
-            Console.WriteLine("=== BICHOOS ===");
-            Console.WriteLine("1 Lista Circular");
-            Console.WriteLine("2 Diccionario");
-            Console.WriteLine("3 Grafo");
-            Console.WriteLine("0 Salir");
+            Console.WriteLine("===== BICHOOS =====");
+            Console.WriteLine("1. Lista Circular");
+            Console.WriteLine("2. Diccionario");
+            Console.WriteLine("3. Grafo");
+            Console.WriteLine("0. Salir");
+            Console.Write("Seleccione una opcion: ");
 
-            opcion =
-            Convert.ToInt32(
-            Console.ReadLine());
+            opcion = Convert.ToInt32(Console.ReadLine());
 
             switch (opcion)
             {
                 case 1:
+
+                    Console.WriteLine("\nCICLO DIA/NOCHE");
 
                     ciclo.Mostrar();
                     ciclo.Avanzar();
@@ -55,14 +49,28 @@ class Program
 
                 case 2:
 
-                    dic.Mostrar();
+                    Console.WriteLine("\nINSECTOS");
+
+                    diccionario.Mostrar();
 
                     break;
 
                 case 3:
 
+                    Console.WriteLine("\nMAPA DEL BOSQUE");
+
                     grafo.Mostrar();
 
+                    break;
+
+                case 0:
+
+                    Console.WriteLine("Hasta luego.");
+                    break;
+
+                default:
+
+                    Console.WriteLine("Opcion incorrecta.");
                     break;
             }
 
