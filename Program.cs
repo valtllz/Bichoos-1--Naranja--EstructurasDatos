@@ -4,8 +4,7 @@ class Program
 {
     static void Main()
     {
-        ListaCircular ciclo = new ListaCircular();
-        ciclo.Inicializar();
+        ListaCircular tiempo = new ListaCircular();
 
         DiccionarioBichoos diccionario =
             new DiccionarioBichoos();
@@ -34,7 +33,13 @@ class Program
             Console.WriteLine("0. Salir");
             Console.Write("Seleccione una opcion: ");
 
-            opcion = Convert.ToInt32(Console.ReadLine());
+            string entrada = Console.ReadLine()!;
+
+            if (!int.TryParse(entrada, out opcion))
+            {
+                Console.WriteLine("Debe ingresar un numero.");
+                continue;
+            }
 
             switch (opcion)
             {
@@ -42,8 +47,8 @@ class Program
 
                     Console.WriteLine("\nCICLO DIA/NOCHE");
 
-                    ciclo.Mostrar();
-                    ciclo.Avanzar();
+                    tiempo.Mostrar();
+                    tiempo.Avanzar();
 
                     break;
 
