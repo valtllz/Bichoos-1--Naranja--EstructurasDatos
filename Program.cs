@@ -4,6 +4,11 @@ ListaEnlazadaSimple lista = new();
 MapaBosque mapa = new();
 Mochila mochila = new();
 
+// NUEVAS ESTRUCTURAS DEL PAQUETE 2
+ListaDoble listaDoble = new();
+ListaGenerica listaGenerica = new();
+ColaGenerica colaGenerica = new();
+
 int opcion;
 
 do
@@ -17,7 +22,13 @@ do
     Console.WriteLine("6. Recolectar recurso");
     Console.WriteLine("7. Ver último recurso");
     Console.WriteLine("8. Retirar último recurso");
-    Console.WriteLine("9. Salir");
+
+    // PAQUETE 2
+    Console.WriteLine("9. Probar Lista Doblemente Enlazada");
+    Console.WriteLine("10. Probar List<T>");
+    Console.WriteLine("11. Probar Queue<T>");
+
+    Console.WriteLine("0. Salir");
 
     Console.Write("Opción: ");
 
@@ -74,7 +85,65 @@ do
             mochila.Retirar();
             break;
 
+        // LISTA DOBLEMENTE ENLAZADA
         case 9:
+
+            listaDoble.Insertar(10);
+            listaDoble.Insertar(20);
+            listaDoble.Insertar(30);
+
+            Console.WriteLine("\nLista doble:");
+            listaDoble.Mostrar();
+
+            Console.WriteLine($"Buscar 20: {listaDoble.Buscar(20)}");
+
+            listaDoble.Eliminar(20);
+
+            Console.WriteLine("Después de eliminar 20:");
+            listaDoble.Mostrar();
+            break;
+
+        // LIST<T>
+        case 10:
+
+            listaGenerica.Agregar("Escarabajo");
+            listaGenerica.Agregar("Araña");
+            listaGenerica.Agregar("Hormiga");
+
+            Console.WriteLine("\nEnemigos activos:");
+            listaGenerica.Mostrar();
+
+            Console.WriteLine(
+                $"¿Existe Araña? {listaGenerica.Buscar("Araña")}"
+            );
+
+            listaGenerica.Eliminar("Araña");
+
+            Console.WriteLine("Después de eliminar Araña:");
+            listaGenerica.Mostrar();
+
+            break;
+
+        // QUEUE<T>
+        case 11:
+
+            colaGenerica.Agregar("Oleada 1");
+            colaGenerica.Agregar("Oleada 2");
+            colaGenerica.Agregar("Oleada 3");
+
+            Console.WriteLine("\nCola actual:");
+            colaGenerica.Mostrar();
+
+            colaGenerica.MostrarSiguiente();
+
+            colaGenerica.Atender();
+
+            Console.WriteLine("Después de atender:");
+            colaGenerica.Mostrar();
+
+            break;
+
+        case 0:
             Console.WriteLine("Hasta luego.");
             break;
 
@@ -83,4 +152,4 @@ do
             break;
     }
 
-} while (opcion != 9);
+} while (opcion != 0);
